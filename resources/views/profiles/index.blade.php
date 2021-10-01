@@ -8,9 +8,12 @@
         </div>
         <div class="col-md-9 p-5">
             {{-- <div></div> --}}
-            <div><h1>{{ $user->username; }}</h1></div>
+            <div class="d-flex justify-content-between align-items-baseline">
+                <h1>{{ $user->username; }}</h1>
+                <a href="/p/create">Add new Post</a>
+            </div>
             <div class="d-flex">
-                <div class="pr-5"><strong>123</strong> Posts</div>
+                <div class="pr-5"><strong>{{ $user->posts->count();}}</strong> Posts</div>
                 <div class="pr-5"><strong>50k</strong> Follwers</div>
                 <div class="pr-5"><strong>200 </strong> Following</div>
             </div>
@@ -19,17 +22,14 @@
             <div><a href="#">{{ $user->profile->url ?? 'N/A' }}</a></div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-md-4 pt-4">
-            <img src="img\img1.png" alt="" class="w-100">
+   
+        <div class="row">
+            @foreach($user->posts as $post)
+                <div class="col-md-4 pt-4 pb-4">
+                    <img src="/storage/{{ $post->image }}" alt="" class="w-100">
+                </div>
+            @endforeach
         </div>
-        <div class="col-md-4 pt-4">
-            <img src="img\img1.png" alt="" class="w-100">
-        </div>
-        <div class="col-md-4 pt-4">
-            <img src="img\img1.png" alt="" class="w-100">
-        </div>
-    </div>
+    
 </div>
 @endsection

@@ -10,6 +10,6 @@ class ProfilesController extends Controller
     public function index($user)
     {
         $user = User::findorfail($user);
-        return view('home')->with('user',$user);
+        return view('profiles.index')->with('user',$user);
     }
 }
